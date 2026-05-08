@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  serverest:
+    image: paulogoncalvesbh/serverest
+    container_name: serverest
+    ports:
+      - "3000:3000"
+  
+  karate:
+    image: maven:3.9.9-eclipse-temurin-17
+    container_name: karate-tests
+    working_dir: /app
+    volumes:
+      - .:/app
+    depends_on:
+      - serverest
+    environment:
+       - KARATE_ENV=${ENV}
+    command: mvn clean test -Dkarate.env=${ENV}

@@ -10,8 +10,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <karate.version>1.4.1</karate.version>
     </properties>
 
@@ -47,6 +47,22 @@
             </plugin>
 
         </plugins>
+
+        <testResources>
+        <testResource>
+            <directory>src/test/java</directory>
+            <includes>
+                <include>**/*.feature</include>
+                <include>**/*.json</include>
+                <include>**/*.js</include>
+            </includes>
+        </testResource>
+
+        <testResource>
+            <directory>src/test/resources</directory>
+        </testResource>
+    </testResources>
+    
     </build>
 
 </project>
