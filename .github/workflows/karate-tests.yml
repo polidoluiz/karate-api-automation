@@ -34,7 +34,7 @@ jobs:
     - name: Run Tests
       run: |
         docker compose run --rm karate \
-        mvn clean test -Dkarate.env=${ENV}
+        mvn clean test -Dkarate.env=${ENV} && mvn allure:report 
 
     - name: Upload Karate Reports
       if: always()
@@ -42,7 +42,7 @@ jobs:
       with:
         name: karate-report
         path: |
-          target/karate-reports
+          target/site/allure-maven-plugin 
 
     - name: Cleanup
       if: always()
