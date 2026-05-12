@@ -17,4 +17,3 @@ services:
       - serverest
     environment:
        - KARATE_ENV=${ENV}
-    command: mvn clean test -Dkarate.env=${ENV}
