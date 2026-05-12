@@ -33,7 +33,7 @@ jobs:
         
     - name: Run Tests
       run: |
-        docker compose run --rm karate-tests \
+        docker compose run --rm karate \
         mvn clean test -Dkarate.env=${ENV}
 
     - name: Cleanup
