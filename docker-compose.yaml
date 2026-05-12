@@ -17,3 +17,11 @@ services:
       - serverest
     environment:
        - KARATE_ENV=${ENV}
+
+  allure_report:
+    image: frankescobar/allure-docker-service
+    container_name: allure_report
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./target/allure-results:/app/allure-results

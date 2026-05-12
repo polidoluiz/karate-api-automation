@@ -4,7 +4,6 @@ class TestRunner {
 
     @Karate.Test
     Karate testAll() {
-        return Karate.run("classpath:features")
-                .outputCucumberJson(true);
+        return Karate.run().relativeTo(getClass());
     }
 }
