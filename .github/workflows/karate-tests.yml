@@ -30,7 +30,10 @@ jobs:
     - name: Start Container
       run: |
         docker compose up -d --build
-        
+
+    - name: Root Permission for Allure Write
+      run: sudo chmod -R 777 .   
+   
     - name: Run Tests
       run: |
         docker compose run --rm karate \
