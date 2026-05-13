@@ -35,6 +35,12 @@ jobs:
       - name: Run Tests
         run: docker compose run --rm karate mvn clean test -Dkarate.env=${ENV}
 
+      - name: Upload target
+        uses: actions/upload-artifact@v4
+        with:
+          name: target
+          path: target
+
       - name: Cleanup
         if: always()
         run: docker compose down -v
@@ -55,6 +61,12 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
+
+      - name: Download Target
+        uses: actions/download-artifact@v4
+        with:
+          name: target
+          path: target
 
       - name: Generate Report
         run: docker compose run --rm karate mvn allure:report
