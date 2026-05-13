@@ -6,8 +6,6 @@ services:
       - "3000:3000"
   
   karate:
-    build: .
-    user: "${UID}:${GID}"
     image: maven:3.9.9-eclipse-temurin-17
     container_name: karate-tests
     working_dir: /app

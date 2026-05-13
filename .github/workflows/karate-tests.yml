@@ -8,9 +8,7 @@ on:
 
 env:
   ENV: dev
-  UID: 1001
-  GID: 1001
-
+  
 jobs:
   tests:
     runs-on: ubuntu-latest
