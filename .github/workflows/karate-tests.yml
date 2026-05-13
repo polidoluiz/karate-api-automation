@@ -45,6 +45,17 @@ jobs:
         path: |
           target/site/allure-maven-plugin 
 
+    - name: Prepare GitHub Pages Folder
+      run: |
+        mkdir -p gh-pages
+        cp -r target/site/allure-maven-plugin/* gh-pages/
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./gh-pages
+
     - name: Cleanup
       if: always()
       run: docker compose down -v
