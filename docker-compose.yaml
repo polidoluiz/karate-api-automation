@@ -8,9 +8,10 @@ services:
   karate:
     image: maven:3.9.9-eclipse-temurin-17
     container_name: karate-tests
-    working_dir: /app
     volumes:
       - .:/app
+      - maven_cache:/root/.m2
+    working_dir: /app
     depends_on:
       - serverest
     environment:

@@ -8,7 +8,7 @@ on:
 
 env:
   ENV: dev
-  
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -31,13 +31,11 @@ jobs:
       run: |
         docker compose up -d --build
 
-    - name: Root Permission for Allure Write
-      run: sudo chmod -R 777 .   
-   
-    - name: Run Tests
-      run: |
-        docker compose run --rm karate \
-        mvn clean test -Dkarate.env=${ENV} && mvn allure:report 
+    - name: Tests
+      run: docker compose run --rm karate mvn clean test -Dkarate.env=${ENV}
+
+    - name: Report
+      run: docker compose run --rm karate mvn allure:report
 
     - name: Upload Karate Reports
       if: always()
